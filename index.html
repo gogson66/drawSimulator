@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw Simulator</title>
+    <script type="module" defer src="./main.js"></script>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <header>
+        <h1>Draw Simulator</h1>
+    </header>
+    <main>
+    <form class="draw__form">
+        <p class="draw__instruction">Enter participants inside text area, one participant by row</p>
+        <textarea id="participants" class="draw__participants"></textarea>
+        <button class="draw__button">Draw</button>
+        
+    </form>
+    <button class="draw__seeds-button draw__button">Set Seeds</button>
+    <div class="seed__container hidden">
+        <div class="seed__header">
+        <div class="seed__description">Choose number of seeded participants</div>
+        <ul class="seed__options"> 
+            <li>2</li>
+            <li>4</li>
+            <li>8</li>
+            <li>16</li>
+            <li>32</li>
+        </ul>
+    </div>
+    </div>
+    <div class="draw__container">
+        <ul class="draw__list">
+        </ul>
+    </div>
+    <div class="button-container"></div>
+</main>
+<footer></footer>
+</body>
+</html>

@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Inspiration&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: rgba(238, 182, 79, 0.26);
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+header {
+  color: blueviolet;
+  font-family: Inspiration;
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+.draw__instruction {
+  margin: 1.1rem;
+  color: blueviolet;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.draw__participants {
+  width: 50%;
+  height: 20rem;
+  display: block;
+  margin: 1rem;
+}
+
+.seed__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.draw__participants:focus-visible {
+  outline: none;
+}
+
+.draw__button {
+  margin-left: 1.1rem;
+  color: blueviolet;
+  font-weight: bold;
+  border: 1px solid black;
+  width: 5rem;
+  padding: 0.2rem;
+}
+
+.draw__button:hover {
+  color: white;
+  background-color: blueviolet;
+  border: 1.5px solid black;
+}
+
+main {
+  margin-top: 4rem;
+  height: 100%;
+  grid-area: main;
+}
+
+.draw__form {
+  height: 20rem;
+  margin-bottom: 2.5rem;
+}
+
+footer {
+  grid-area: footer;
+}
+
+.draw__list {
+  list-style: none;
+}
+
+.draw__match {
+  height: 1rem;
+  margin: 0.5rem;
+}
+
+.draw__round {
+  margin: 1.5rem 0.5rem;
+}
+
+.draw__container {
+  margin: 5rem 0.5rem 2rem 0.5rem;
+}
+
+.draw__list {
+  padding-left: 0;
+}
+
+.match {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  color: blueviolet;
+}
+
+.draw__save {
+  width: 7rem;
+  margin: 1rem 1rem;
+
+}
+
+.draw__seeds-button {
+  position:absolute;
+  left: 100px;
+  top: 35.56rem
+}
+
+footer {
+  margin-top: 3.5rem;
+  height: 3.5rem;
+  background-color: orange;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.unseeded {
+  cursor:move;
+  margin: 0.3rem auto;
+  padding: 1.6rem 0.3rem;
+  background-color: darkred;
+  color: white;
+  width: 100%;
+  height: 69.2px;
+}
+
+.seeded {
+  background-color: green;
+}
+
+.seed__options {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 33%;
+  margin-right: 6rem;
+}
+
+.seed__options li {
+  border: 1px solid black;
+  background-color: blueviolet;
+  color: white;
+  padding: 0.3rem;
+  width: 15%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.seed__options li:hover {
+  background-color: white;
+  color: blueviolet;
+  font-weight: bold;
+}
+
+.film__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.seed__number {
+  background-color:darkgoldenrod;
+  margin: 0.3rem auto;
+  padding: 1rem;
+  text-align: center;
+  border: 5px solid brown;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.seed__form {
+  width: 10%;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.dragging {
+  opacity: .5;
+}
+
+.seed__delete {
+  cursor:pointer;
+  font-size: 1.5rem;
+  transform: translateY(23px) translateX(-40px);
+  color: white;
+  height: 50%;
+}
+
+.seed__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.draw__button-seed {
+ margin-right: 1rem;
+
+}
+
+.draw__button-seed:disabled {
+  color: white;
+  background: gray;
+}
+
+.seed__description {
+  margin-left: 0.3rem;
+}
+
