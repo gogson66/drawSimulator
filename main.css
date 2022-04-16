@@ -21,6 +21,11 @@ header {
   margin: 1rem;
 }
 
+header > h1 {
+  display: inline;
+  cursor: pointer;
+}
+
 .draw__instruction {
   margin: 1.1rem;
   color: blueviolet;
@@ -111,7 +116,7 @@ footer {
 .draw__seeds-button {
   position:absolute;
   left: 100px;
-  top: 35.56rem
+  top: 33.9rem
 }
 
 footer {
@@ -123,7 +128,8 @@ footer {
   left: 0;
 }
 
-.unseeded {
+.unseeded,
+.unseeded__input {
   cursor:move;
   margin: 0.3rem auto;
   padding: 1.6rem 0.3rem;
@@ -193,16 +199,47 @@ footer {
 
 .seed__delete {
   cursor:pointer;
-  font-size: 1.5rem;
-  transform: translateY(23px) translateX(-40px);
   color: white;
   height: 50%;
+  font-style: normal;
+
+}
+
+.fa {
+  width: 0;
+  height: 0;
+}
+
+.fa-edit {
+  transform: translateY(32.5px) translateX(-65px);
+}
+
+.fa-close {
+  transform: translateY(32px) translateX(-40px);
+}
+
+.change-name {
+  border: none;
+  cursor: initial;
+  width: 100%;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  
+}
+
+.change-name:focus {
+  outline: none;
+  background-color: black;
 }
 
 .seed__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+}
+
+.form__edit {
   width: 100%;
 }
 

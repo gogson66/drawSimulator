@@ -1,7 +1,9 @@
+import { putSeeds } from "./seeding.js";
+import { generateButtons } from "./helpers.js";
+
+
 const seedPatterns = [[1, 2], [1, 4, 3, 2], [1, 8, 5, 4, 3, 6, 7, 2], [1, 16, 9, 8, 13, 4, 5, 12, 11, 6, 14, 3, 7, 10, 15, 2], [1, 32, 17, 16, 9, 24, 25, 8, 5, 28, 12, 21, 13, 20, 29, 4, 11, 22, 27, 6, 14, 19, 3, 30, 23, 7, 26, 10, 15, 18, 31, 2] ]
 const drawList = document.querySelector('.draw__list')
-
-
 
 const shuffle = function(array) {
     
@@ -23,7 +25,7 @@ const shuffle = function(array) {
     return array;
   }
 
-  const drawing = function(list, remain, match=1, stage=1, seedRound=false) {
+const drawing = function(list, remain, match=1, stage=1, seedRound=false, numberOfSeeds) {
 
     let round
     if (list.length === 2 && !remain ) round = 'FINAL'
@@ -54,12 +56,13 @@ const shuffle = function(array) {
     
 
     if (list.length >= 2 && round !== 'FINAL') {
+    
+    
 
     if (seedRound && numberOfSeeds !== 0) {
 
     const length = nextRound.length  
     const seededArray = nextRound.splice(0, numberOfSeeds) 
-    console.log(seededArray);
      
     const shuffledArray = shuffle(nextRound)  
     const seedPatern = seedPatterns.filter(pattern => pattern.length === numberOfSeeds)
@@ -68,9 +71,66 @@ const shuffle = function(array) {
 
     }
 
-    drawing(numberOfSeeds !== 0 ? nextRound : shuffle(nextRound), remain=undefined, match, stage)
+    drawing(numberOfSeeds !== 0 ? nextRound : shuffle(nextRound), remain=undefined, match, stage, seedRound=false, numberOfSeeds)
     }
     
     }
 
-  export { shuffle, drawing} 
+    const generateDraw = function(array, drawParticipants, numberOfSeeds, seed=false) {
+
+
+        if (!array || array.length === 1) {
+          drawParticipants.style.border = '2px solid red'  
+          drawParticipants.value = ''
+          drawParticipants.placeholder = 'You must enter at least two participants'
+          return
+        }
+        
+        drawParticipants.style.border = '1px solid black'  
+        
+        
+        
+        let newList;
+        
+        
+        if(!Number.isInteger(Math.log2(array.length)) && !Number.isInteger(Math.log2(array.length + 1))) {
+          const closest = 2 ** Math.floor(Math.log2(array.length))
+          
+          
+          
+          const numberOfFirstRound = (array.length - closest) * 2
+          
+          newList = array.splice(-numberOfFirstRound)
+        
+          if (array.length < numberOfSeeds) {
+            const seeds = newList.splice(0, numberOfSeeds - array.length)
+            console.log(numberOfSeeds - array.length);
+            
+            shuffle(newList)
+            seeds.forEach((item, i) => newList.splice(i * 2, 0, item + ` (${i + 1 + array.length})`))    
+          } else shuffle(newList)
+        
+          drawing(numberOfSeeds !== 0 ? newList : shuffle(newList), array, 1, 1, true, numberOfSeeds) 
+           
+        }
+        else {
+        
+          if (numberOfSeeds !== 0) {  
+          const length = array.length  
+          const seededArray = array.splice(0, numberOfSeeds)  
+          const shuffledArray = shuffle(array)  
+          const seedPatern = seedPatterns.filter(pattern => pattern.length === numberOfSeeds)
+          const fullArray = putSeeds(shuffledArray, seededArray, ...seedPatern, length) 
+        
+          newList = fullArray
+          drawing(newList, undefined, 1, 1, false, numberOfSeeds)
+          }else drawing(shuffle(newList), undefined, 1, 1, false, numberOfSeeds)
+        }
+        
+        seed ? generateButtons(true) : generateButtons()
+        
+        
+        }
+
+
+  export { shuffle, drawing, generateDraw} 
